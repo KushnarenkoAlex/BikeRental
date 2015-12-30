@@ -1,0 +1,18 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+
+    <!--<bean id="multipartResolver"-->
+          <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+        <!--&lt;!&ndash; max upload size in bytes &ndash;&gt;-->
+        <!--<property name="maxUploadSize" value="20971520"/>-->
+        <!--&lt;!&ndash; 20MB &ndash;&gt;-->
+
+        <!--&lt;!&ndash; max size of file in memory (in bytes) &ndash;&gt;-->
+        <!--<property name="maxInMemorySize" value="1048576"/>-->
+        <!--&lt;!&ndash; 1MB &ndash;&gt;-->
+
+    <!--</bean>-->
+
+<!--</beans>-->

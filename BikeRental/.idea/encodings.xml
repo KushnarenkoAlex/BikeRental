@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/config/DBConfig.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/dao/impl/AgreementDaoImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/dao/impl/BicycleDaoImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/dao/impl/UserDaoImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/AgreementService.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/BicycleService.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/UserService.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/impl/AgreementServiceImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/impl/BicycleServiceImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/epam/hackathon/service/impl/UserServiceImpl.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/import.sql" charset="windows-1251" />
+  </component>
+</project>
