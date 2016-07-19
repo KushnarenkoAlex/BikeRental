@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JsonQuery implements ServerQuery {
 
@@ -42,7 +43,10 @@ public class JsonQuery implements ServerQuery {
             HttpPost post = new HttpPost(query);
             List<NameValuePair> param = new ArrayList<NameValuePair>(params.size());
 
-            params.entrySet().forEach(set -> param.add(new BasicNameValuePair(set.getKey(), set.getValue().toString())));
+            for(Map.Entry<String,Object> set:params.entrySet())
+            {
+                param.add(new BasicNameValuePair(set.getKey(), set.getValue().toString()));
+            }
 
             post.setEntity(new UrlEncodedFormEntity(param, "UTF-8"));
             HttpResponse response = httpClient.execute(post);

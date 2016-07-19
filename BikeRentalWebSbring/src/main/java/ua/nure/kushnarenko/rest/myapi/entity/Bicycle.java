@@ -14,6 +14,8 @@ public class Bicycle {
 
     private String name;
 
+    private String image;
+
     private Long price;
 
     private Double x;
@@ -37,6 +39,7 @@ public class Bicycle {
         u.setPrice(jsonObject.getLong("price"));
         u.setX(jsonObject.getDouble("x"));
         u.setY(jsonObject.getDouble("y"));
+        u.setImage(jsonObject.getString("image"));
         return u;
     }
 
@@ -55,7 +58,7 @@ public class Bicycle {
     public Bicycle() {
     }
 
-    public Bicycle(Long id, String type, String name, Long price, Double x, Double y) {
+    public Bicycle(Long id, String type, String name, Long price, Double x, Double y, String image) {
 
         this.id = id;
         this.type = type;
@@ -63,6 +66,7 @@ public class Bicycle {
         this.price = price;
         this.x = x;
         this.y = y;
+        this.image = image;
     }
 
     public Long getId() {
@@ -112,5 +116,13 @@ public class Bicycle {
 
     public void setY(Double y) {
         this.y = y;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

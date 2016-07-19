@@ -25,15 +25,7 @@ public class Bicycle implements Serializable {
 
     private String name;
 
-//    public byte[] getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(byte[] image) {
-//        this.image = image;
-//    }
-
-//    private byte[] image;
+    private String image;
 
     private Long price;
 
@@ -124,5 +116,11 @@ public class Bicycle implements Serializable {
         this.name = name;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

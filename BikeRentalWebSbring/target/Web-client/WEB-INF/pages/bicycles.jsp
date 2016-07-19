@@ -193,7 +193,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="bike-apparels">
                             <c:forEach var="bike" items="${bikes}">
                                 <div class="part-sec">
-                                    <img src="/resources/images/bik1.jpg" alt=""/>
+                                    <c:if test="${not empty bike.image}">
+                                        <img src="/resources/images/bikeimg/${bike.image}" alt=""/>
+                                    </c:if>
+                                    <c:if test="${empty bike.image}">
+                                        <img src="/resources/images/bik1.jpg" alt=""/>
+                                    </c:if>
 
                                     <div class="part-info">
                                         <a href="#"><h5>

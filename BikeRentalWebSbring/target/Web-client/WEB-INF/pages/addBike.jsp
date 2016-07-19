@@ -163,14 +163,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </select>
             </tr>
             <tr>
+                <td>IMAGE:</td>
+                <td>
+                    <input type="file" name="image" />
+            </tr>
+            <tr>
                 <td>CHOOSE CURRENT BIKE LOCATION:</td>
                 <td>
                     <div id="map_container"></div>
                     <input type="hidden" id="x"
                            name="x" class="form-control input-text"
                            placeholder="x"></td>
-                    <input type="hidden" id="y"
-                           name="y" class="form-control input-text"
+                <input type="hidden" id="y"
+                       name="y" class="form-control input-text"
                        placeholder="y"></td>
                 </td>
             </tr>

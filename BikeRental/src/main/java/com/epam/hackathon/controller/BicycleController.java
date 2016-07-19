@@ -50,13 +50,15 @@ public class BicycleController {
                            @RequestParam(value = "price") Long price,
                            @RequestParam(value = "user_id") Long userId,
                            @RequestParam(value = "x") Float x,
-                           @RequestParam(value = "y") Float y) {
+                           @RequestParam(value = "y") Float y,
+                           @RequestParam(value = "image") String image) {
         Bicycle bicycle = new Bicycle();
         bicycle.setName(name);
         bicycle.setPrice(price);
         bicycle.setType(type);
         bicycle.setX(x);
         bicycle.setY(y);
+        bicycle.setImage(image);
         bicycle.setUser(userService.findUserById(userId));
 
 

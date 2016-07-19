@@ -1,10 +1,13 @@
 package ua.nure.kushnarenko;
 
+import javafx.application.Application;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import ua.nure.kushnarenko.rest.myapi.constant.PathConstant;
 import ua.nure.kushnarenko.rest.myapi.entity.Agreement;
@@ -14,6 +17,10 @@ import ua.nure.kushnarenko.rest.myapi.query.JsonQuery;
 import ua.nure.kushnarenko.rest.myapi.query.ServerQuery;
 
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +35,6 @@ public class BikeController {
         String res = query.sendGetQuery(PathConstant.BICYCLE_GETALL);
         List<Bicycle> bicycles = Bicycle.fromJsonList(res);
         model.put("bikes", bicycles);
-        bicycles.forEach((p) -> System.out.printf("%s", p.getName()));
         return new ModelAndView("bicycles");
     }
 
@@ -52,12 +58,14 @@ public class BikeController {
     @RequestMapping(value = "/rend", method = RequestMethod.POST)
     public ModelAndView doAgreement(HttpSession session, ModelMap model) {
         Agreement curAgreement = (Agreement) session.getAttribute("curAgreement");
+        System.out.println(curAgreement);
         ServerQuery query = new JsonQuery();
-        HashMap<String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("bikeId", curAgreement.getBicycle().getId());
         map.put("fromDate", curAgreement.getFromDate());
-        map.put("toDate", curAgreement.getToDate());
-        map.put("userId", curAgreement.getUser().getId());
+        map.put("toDate", new java.util.Date());
+        User u = (User) session.getAttribute("currentUser");
+        map.put("userId", u.getId());
         String res = query.sendPostQuery(PathConstant.ADD_AGREEMENT, map);
         session.setAttribute("curAgreement", null);
         return goBikeList(session, model);
@@ -74,10 +82,11 @@ public class BikeController {
                                   @RequestParam(value = "price") String price,
                                   @RequestParam(value = "x") Float x,
                                   @RequestParam(value = "y") Float y,
+                                  @RequestParam("image") MultipartFile image,
                                   HttpSession session,
                                   ModelMap model) {
         ServerQuery query = new JsonQuery();
-        HashMap<String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
         User u = (User) session.getAttribute("currentUser");
         map.put("name", name);
         map.put("type", type);
@@ -85,6 +94,18 @@ public class BikeController {
         map.put("user_id", u.getId());
         map.put("x", x);
         map.put("y", y);
+        String imageName = u.getId().toString() + name + ".jpg";
+        map.put("image", imageName);
+        if (!image.isEmpty()) {
+            try {
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(new File("D:\\Uni\\ATPPZ\\BikeRentalWebSbring\\src\\main\\webapp\\resources\\images\\bikeimg\\" +imageName)));
+                FileCopyUtils.copy(image.getInputStream(), stream);
+                stream.close();
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }
         String res = query.sendPostQuery(PathConstant.ADD_BICYCLE, map);
         return goBikeList(session, model);
     }

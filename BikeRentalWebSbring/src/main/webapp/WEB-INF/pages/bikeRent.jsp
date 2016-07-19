@@ -141,11 +141,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <ul id="etalage">
                                     <li>
                                         <a href="optionallink.html">
-                                            <img class="etalage_thumb_image" src="/resources/images/bik1.jpg"
-                                                 class="img-responsive"/>
-                                            <img class="etalage_source_image" src="/resources/images/bik1.jpg"
-                                                 class="img-responsive"
-                                                 title=""/>
+                                            <c:if test="${not empty bike.image}">
+                                                <img class="etalage_thumb_image"
+                                                     src="/resources/images/bikeimg/${bike.image}" alt=""
+                                                     class="img-responsive"/>
+                                                <img class="etalage_source_image"
+                                                     src="/resources/images/bikeimg/${bike.image}" alt=""
+                                                     class="img-responsive"/>
+                                            </c:if>
+                                            <c:if test="${empty bike.image}">
+                                                <img class="etalage_thumb_image" src="/resources/images/bik1.jpg" alt=""
+                                                     class="img-responsive"/>
+                                                <img class="etalage_source_image" src="/resources/images/bik1.jpg" alt=""
+                                                     class="img-responsive"/>
+                                            </c:if>
                                         </a>
                                     </li>
                                 </ul>
@@ -162,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     $("#rentButton").click(function () {
                                         navigator.geolocation.getCurrentPosition(function (position) {
 
-                                            var rad = function(x) {
+                                            var rad = function (x) {
                                                 return x * Math.PI / 180;
                                             };
 
@@ -181,13 +190,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     Math.sin(dLong / 2) * Math.sin(dLong / 2);
                                             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                                             var d = R * c;
-                                            if(d<100)
-                                            {
+                                            if (d < 100) {
                                                 $("#distError").html('');
-                                                window.location.href="/bicycle/rend?id=${bike.id}";
+                                                window.location.href = "/bicycle/rend?id=${bike.id}";
                                             }
-                                            else{
-                                                $("#distError").html('You are to far from this bike ('+ Math.round(d) +' m). Go near to 100 m to rent it.');
+                                            else {
+                                                $("#distError").html('You are to far from this bike (' + Math.round(d) + ' m). Go near to 100 m to rent it.');
                                             }
                                         }, function (err) {
                                         });
@@ -195,7 +203,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 });
                             </script>
                             <div class="btn_form" id="rentButton">
-                                <a >buy now</a>
+                                <a>buy now</a>
                             </div>
                             <div class="bike-type">
                                 <p><a href="#" id="distError"></a></p>

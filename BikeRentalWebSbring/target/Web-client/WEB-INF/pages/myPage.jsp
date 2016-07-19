@@ -44,7 +44,7 @@
                                     <div class="price-details">
                                         <h3>Choose Options</h3>
                                         <span>Payment</span> <br> <select
-                                            class="selectpicker" name="payment">
+                                            class="selectpicker">
                                         <option value="">PayPal</option>
                                         <option value="">Privat</option>
                                     </select>
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                     <h2>Total price: ${sessionScope.price}</h2>
-                                    <input type="submit" name="Pay"
+                                    <input type="submit" class="btn btn-default" name="Pay"
                                            value="Pay">
                                 </form>
                             </div>

@@ -44,7 +44,7 @@
                                     <div class="price-details">
                                         <h3>Choose Options</h3>
                                         <span>Payment</span> <br> <select
-                                            class="selectpicker" name="payment">
+                                            class="selectpicker">
                                         <option value="">PayPal</option>
                                         <option value="">Privat</option>
                                     </select>
